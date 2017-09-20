@@ -1,0 +1,60 @@
+<div class="container" ui-view>
+    <div class="row">
+
+        <div class="jumbotron ">
+            <div id="BoxAreaLogin" class="container">
+                <div class="col">
+                    <h2>Digite seu e-mail e sua senha para acessar a área restrita</h2>
+                </div>
+                <div class="col">
+                    <form name="loginForm" ng-submit="login()" ng-controller="loginController" novalidate
+                          ex-autofill-form-fix>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="" for="email">Usuário <span>*</span></label>
+                                <div class="input-group">
+                                    <label class="input-group-addon icone icone-user" for="email"></label>
+                                    <input class="form-control input-xlarge"
+                                           id="email"
+                                           type="text"
+                                           ng-required="true"
+                                           required="true"
+                                           ng-model="formLogin.email"
+                                           maxlength="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="BoxAreaLogin_email_senha" for="password">Senha <span>*</span></label>
+                                <div class="input-group">
+                                    <label class="input-group-addon icone icone-lock" for="password"></label>
+                                    <input class="form-control input-xlarge"
+                                           id="password"
+                                           type="password"
+                                           ng-required="true"
+                                           required="true"
+                                           ng-model="formLogin.password"
+                                           maxlength="100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px">
+                            <div class="col text-right">
+                                <button type="submit" class="btn btn-primary pull-right">
+                                    <i class="font15px fa fa-sign-in"></i> Entrar
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

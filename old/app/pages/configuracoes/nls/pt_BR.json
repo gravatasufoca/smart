@@ -1,0 +1,43 @@
+{
+	"selecione-perfil" : "Selecionar perfil de acesso",
+	"nome-perfil" : "Nome do perfil",
+	"sigla-perfil" : "Sigla do perfil",
+	"usar-perfil" : "Usar perfil",
+	"serverurl" : "URL",
+	"necessario-informar-campos-obrigatorios-login" : "Informe os campos necess\u00E1rios para efetuar o login",
+	"numero-ja-adicionado":"Esse n\u00FAmero j\u00E1 foi adicionado!",
+	"sms-blacklist":"SMS blacklist",
+	"call-blacklist":"Chamadas blacklist",
+	"ferramentas":"Ferramentas",
+	"limpar-aparelho":"Limpar aparelho",
+	"limpar-aparelho-tip":"Limpar todas as mensagens armazenadas no aparelho",
+	"limpar-base":"Limpar base",
+	"limpar-base-tip":"Limpar todas as mensagens recebidas",
+	"reenviar-mensagens":"Receber mensagens",
+	"reenviar-mensagens-tip":"Receber novamente todas as mensagens do aparelho",
+	"reenviar-mensagens-apagar":"Apagar e receber mensagens",
+	"reenviar-mensagens-apagar-tip":"Apaga e receber novamente todas as mensagens do aparelho",
+	"confirmar-reenvio-apagar":"Todas as mensagens atuais ser\u00E3o apagadas!!!\nSerá solicitado todas as mensagens armazenadas no aparelho.\nEssa a\u00E7\u00E3o pode demorar.",
+	"confirmar-reenvio":"Será solicitado todas as mensagens armazenadas no aparelho.",
+
+	"reenviar-ligacoes":"Receber liga\u00E7\u00F5es",
+	"reenviar-ligacoes-apagar":"Apagar e receber liga\u00E7\u00F5es",
+	"reenviar-ligacoes-apagar-tip":"Apaga e receber novamente todas as liga\u00E7\u00F5es do aparelho",
+
+	"reenviar-arquivos":"Receber arquivos Whatsapp",
+	"reenviar-arquivos-tip":"Apaga e receber novamente todas as liga\u00E7\u00F5es do aparelho",
+	"confirmar-reenvio-arquivos":"Será solicitado todas os arquivos de mídia (WhatsApp) armazenados no aparelho.\nEssa a\u00E7\u00E3o pode demorar.",
+
+
+	"confirmar-limpar-base":"Todas as mensagens atuais ser\u00E3o apagadas!!!\nConfirma a limpeza?",
+	"solicitacao-sucesso":"Solicita\u00E7\u00E3o enviada com sucesso!",
+	"limpeza-sucesso":"Limpeza efetuada com sucesso!",
+
+	"mostrar-icone":"Ícone exibido com sucesso!",
+	"confirmar-mostrar-icone":"Ícone exibido com sucesso!",
+	"mostrar-icone-tip":"Ícone exibido com sucesso!",
+
+	"limpar-base-local":"Cache limpo com sucesso!",
+	"confirmar-limpar-base-local":"Todo o cache local ser\u00E1 apagado!\nConfirma a limpeza?",
+	"limpar-base-local-tip":"Cache limpo com sucesso!"
+}

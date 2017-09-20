@@ -1,0 +1,327 @@
+<div class='container' ui-view>
+    <div class='row'>
+        <div class="span12">
+            <strong class="title">{{'titulo-alterar-configuracao' |
+                translate}}</strong>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="span2">
+            <div class="pull-down22">
+                <div class="btn-group">
+                    <button id="single-button" type="button" class="btn btn-primary dropdown-toggle"
+                            data-toggle="dropdown">
+                        {{'ferramentas'|translate}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+                        <li class="dropdown-header">{{'mensagens'|translate}}</li>
+
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="solicitarReenvio"
+                               titulo="'reenviar-mensagens' | translate"
+                               pergunta="'confirmar-reenvio' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="'false'"
+                               title="{{'reenviar-mensagens-tip' | translate}}">
+                                {{'reenviar-mensagens' | translate}}
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="solicitarReenvio"
+                               titulo="'reenviar-mensagens-apagar' | translate"
+                               pergunta="'confirmar-reenvio-apagar' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="'true'"
+                               title="{{'reenviar-mensagens-apagar-tip' | translate}}">
+                                {{'reenviar-mensagens-apagar' | translate}}
+                            </a>
+                        </li>
+
+                        <li class="dropdown-header">{{'ligacoes'|translate}}</li>
+
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="solicitarReenvioLigacoes"
+                               titulo="'reenviar-ligacoes' | translate"
+                               pergunta="'confirmar-reenvio' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="'false'"
+                               title="{{'reenviar-ligacoes-tip' | translate}}">
+                                {{'reenviar-ligacoes' | translate}}
+                            </a>
+                        </li>
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="solicitarReenvioLigacoes"
+                               titulo="'reenviar-mensagens-apagar' | translate"
+                               pergunta="'confirmar-reenvio-apagar' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="'true'"
+                               title="{{'reenviar-mensagens-apagar-tip' | translate}}">
+                                {{'reenviar-mensagens-apagar' | translate}}
+                            </a>
+                        </li>
+
+                        <li class="dropdown-header">{{'arquivos'|translate}}</li>
+
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="solicitarReenvioArquivos"
+                               titulo="'reenviar-arquivos' | translate"
+                               pergunta="'confirmar-reenvio-arquivos' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="'false'"
+                               title="{{'reenviar-arquivos-tip' | translate}}">
+                                {{'reenviar-arquivos' | translate}}
+                            </a>
+                        </li>
+
+                        <li class="dropdown-header">{{'Geral'|translate}}</li>
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="limparBase"
+                               titulo="'limpar-base' | translate"
+                               pergunta="'confirma-limpar-base' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="atividade"
+                               title="{{'limpar-base-tip' | translate}}">
+                                {{'limpar-base' | translate}}
+                            </a>
+                        </li>
+
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="mostrarIcone"
+                               titulo="'mostrar-icone' | translate"
+                               pergunta="'confirma-mostrar-icone' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="atividade"
+                               title="{{'mostrar-icone-tip' | translate}}">
+                                {{'mostrar-icone' | translate}}
+                            </a>
+                        </li>
+
+                        <li role="menuitem">
+                            <a ex-modal-confirmacao="limparCache"
+                               titulo="'limpar-base-local' | translate"
+                               pergunta="'confirmar-limpar-base-local' | translate"
+                               rotulo-botao="'confirma-modal' | translate"
+                               exibir-confirmacao-quando="true"
+                               item="atividade"
+                               title="{{'limpar-base-local-tip' | translate}}">
+                                {{'limpar-base-local' | translate}}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class='row'>
+        <div class="span12">
+            <div class="conteudo-box">
+                <form novalidate ng-submit="salvarConfiguracao()" ex-formulario-alterado="formularioAlterado">
+                    <div class="span12">
+
+                        <div class="filder panel panel-default" ng-if="usuarioAutenticado.fl_master=='1'">
+                            <div class="panel-heading">
+                                <b class="panel-title">{{'geral' | translate}}</b>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="span2">
+                                        <label for="serverUrl">{{'serverurl' | translate}}</label>
+                                        <input id="serverUrl" type="text" ng-model="configuracao.serverurl"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="filder panel panel-default">
+                            <div class="panel-heading">
+                                <b class="panel-title">{{'dados-configuracao' | translate}}</b>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="span2">
+                                        <label for="nomeAparelho">{{'nome-aparelho' | translate}}</label>
+                                        <input id="nomeAparelho" type="text" ng-model="configuracao.nomeAparelho"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="span2">
+                                        <label for="whats">{{'whatsapp' | translate}}</label>
+                                        <input id="whats" type="checkbox" class="right"
+                                               ng-model="configuracao.whatsapp"/>
+                                    </div>
+
+                                    <div class="span2">
+                                        <label for="messenger">{{'messenger' | translate}}</label>
+                                        <input id="messenger" type="checkbox" class="right"
+                                               ng-model="configuracao.messenger"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span2">
+                                        <label for="media">{{'media' | translate}}</label>
+                                        <input id="media" type="checkbox" class="right"
+                                               ng-model="configuracao.media"/>
+                                    </div>
+
+                                    <div class="span2">
+                                        <label for="avatar">{{'avatar' | translate}}</label>
+                                        <input id="avatar" type="checkbox" class="right"
+                                               ng-model="configuracao.avatar"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="span2">
+                                        <label for="wifi">{{'wifi' | translate}}</label>
+                                        <input id="wifi" type="checkbox" class="right"
+                                               ng-model="configuracao.wifi"/>
+                                    </div>
+
+                                    <div class="span2">
+                                        <label for="intervalo">{{'intervalo' | translate}}</label>
+                                        <input id="intervalo" type="number" class="right"
+                                               ng-model="configuracao.intervalo"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="filder panel panel-default">
+                            <div class="panel-heading">
+                                <b class="panel-title">{{'sms-blacklist' | translate}}</b>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="span3">
+                                        <label for="smsBlack">{{'numero' | translate}}</label>
+                                        <input id="smsBlack" type="text" ng-model="smsBlack.numero"/>
+                                        <ex-obrigatorio mostrar-quando="smsBlack.mostrarMsgErro"></ex-obrigatorio>
+                                    </div>
+                                    <div class="span2">
+                                        <label>&nbsp;</label>
+                                        <button type="button" class="btn-small btn-primary" ng-click="adicionarSms()"
+                                                title="{{'adicionar'|translate}}">
+                                            <i class="font15px fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span class="span12">
+                                        <ul class="list-group">
+                                            <li style="float:left" class="list-group-item"
+                                                ng-repeat="item in configuracao.smsBlacklist">
+                                                <span class="badge" style="float: right;background: none">
+
+                                                     <a ex-modal-confirmacao="removerSms"
+                                                        item="item"
+                                                        pergunta="'confirma-exclusao-registro' | translate"
+                                                        rotulo-botao="'confirma-exclusao' | translate"
+                                                        class="btn-xs btn-danger"
+                                                        title="{{'remover' | translate}}">
+                                                        <i class="fa fa-close"></i>
+                                                    </a>
+
+                                                </span>
+                                                {{item.numero}}
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="filder panel panel-default">
+                            <div class="panel-heading">
+                                <b class="panel-title">{{'call-blacklist' | translate}}</b>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="span3">
+                                        <label for="callBlack">{{'numero' | translate}}</label>
+                                        <input id="callBlack" type="text" ng-model="callBlack.numero"/>
+                                        <ex-obrigatorio mostrar-quando="callBlack.mostrarMsgErro"></ex-obrigatorio>
+                                    </div>
+                                    <div class="span2">
+                                        <label>&nbsp;</label>
+                                        <button type="button" class="btn-small btn-primary" ng-click="adicionarCall()"
+                                                title="{{'adicionar'|translate}}">
+                                            <i class="font15px fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <span class="span12">
+                                        <ul class="list-group">
+                                            <li style="float:left" class="list-group-item"
+                                                ng-repeat="item in configuracao.chamadasBlacklist">
+                                                <span class="badge" style="float: right;background: none">
+
+                                                     <a ex-modal-confirmacao="removerCall"
+                                                        item="item"
+                                                        pergunta="'confirma-exclusao-registro' | translate"
+                                                        rotulo-botao="'confirma-exclusao' | translate"
+                                                        class="btn-xs btn-danger"
+                                                        title="{{'remover' | translate}}">
+                                                        <i class="fa fa-close"></i>
+                                                    </a>
+
+                                                </span>
+                                                {{item.numero}}
+                                            </li>
+                                        </ul>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="span12">
+                            <div class="pull-right">
+                                <a ex-modal-confirmacao="voltar"
+                                   titulo="'titulo-modal-voltar' | translate"
+                                   pergunta="'confirma-modal-sem-salvar' | translate"
+                                   rotulo-botao="'confirma-modal' | translate"
+                                   exibir-confirmacao-quando="formularioAlterado"
+                                   class="btn btn-warning"
+                                   title="{{'volta-tela-consulta' | translate}}">
+                                    <i class="font15px fa fa-arrow-left"></i>
+                                    {{'voltar' | translate}}
+                                </a>
+
+                                <button type="submit" class="btn btn-primary"
+                                        title="{{criadouro.id == null ? 'envia-dados-informados-cadastro' : 'salva-alteracoes-registro' | translate}}">
+                                    <i class="font15px fa fa-floppy-o"></i>
+                                    {{criadouro.id == null ? 'cadastrar' : 'salvar' | translate}}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

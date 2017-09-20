@@ -1,0 +1,112 @@
+<div class="container">
+    <style>
+        .modal {
+            width: 90%;
+            /*height: 669px;*/
+            margin-left: -45%;
+            /*margin-top: -335px; /* 669/2 */
+            padding: 0;
+            border: 0;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            z-index: 2500;
+        }
+    </style>
+
+    <link type="text/css" rel="stylesheet" href="assets/css/chat.css" media="screen"/>
+
+    <div class="row">
+        <div class="span12">
+            <strong class="title">{{ 'home.title' | translate }}</strong>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="box conteudo-box">
+
+            <div class="msgconteudo ">
+                <button ng-click="abreModal()" style="margin-left: 10px;"
+                        type="button" class="btn btn-primary "
+                        title="{{'nova-localizacao'|translate}}">
+                    <i class="font15px fa fa-plus"></i> {{'nova-localizacao'|translate}}
+                </button>
+
+                <button ng-click="abreDeslocamento()" style="margin-left: 10px;"
+                        type="button" class="btn btn-primary "
+                        title="{{'visualizar-deslocamento'|translate}}">
+                    <i class="font15px fa fa-map"></i> {{'visualizar-deslocamento'|translate}}
+                </button>
+
+                <!--COLUNA DOS TOPICOS -->
+                <div class="colunatopico">
+                    <div class="ctopico">
+                        <ul class="ultopico" scrolly="scrolly" on-end="scrollEnd" timeout="500" scrolling="scrolling">
+                            <li class="topico" ng-repeat="topico in topicos | orderBy:'data':reverse">
+                                <a class="intopico" ng-click="selecionarTopico(topico)">
+                                    <div class="chora">
+                                        <div class="hora">{{::topico.qtd}}</div>
+                                    </div>
+                                    <div class="divavatar">
+                                        <span class="avatar user_bgcolor_map">MAP</span>
+                                    </div>
+                                    <div class="nomes">
+                                        <div class="nome">{{'localizacao-dia' |translate}}</div>
+                                        <div class="cmensagem">
+                                            <div class="mensagem">{{::topico.data}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- QUANDO NAO TEM MENSAGENS ESCOLHIDAS-->
+                <div class="mensagenscontainer">
+                    <div class="semmensagens" ng-if="topico.localizacoes.length==0" style="padding-top: 85px;">{{"nenhum-registro"|translate}}</div>
+                    <div class="listamensagem" ng-if="topico.localizacoes.length>0" objeto="localizacoes" scrolly="scrolly"
+                         loading="carregando" scrolling="scrolling"
+                         on-end="scrollMessagesEnd" timeout="500" reverse="true">
+
+                        <div class="im_history_loading_more im_history_loading_more_active loadingwrapper"
+                             ng-show="carregando"
+                             ng-class="{im_history_loading_more_active: state.moreActive}" style="">
+                            <div my-arc-progress="" stroke="3" width="26" ng-show="carregando"
+                                 class="progress-arc-wrap progress-arc-intermediate" style="width: 26px; height: 26px;">
+                                <div class="arc-hider" ng-show="carregando"></div>
+                            </div>
+                        </div>
+
+                        <!-- MENSAGEM COMPLETA -->
+                        <div class="msgwrap" ng-repeat="localizacao in topico.localizacoes | orderBy:'data':reverse">
+
+                            <div class="msgoutwrap">
+                                <div class="msginwrap">
+                                    <div class="msgwrapin">
+                                        <a class="afoto"/>
+                                        <div class="chora">
+                                            <div class="data">{{localizacao.data.format('hh:mm:ss')}}</div>
+                                        </div>
+
+                                        <div class="message_body">
+                                            <a class="author hidden"></a>
+                                            <ex-localizacao localizacao="localizacao" apagar-fn="apagarLocalizacao"></ex-localizacao>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

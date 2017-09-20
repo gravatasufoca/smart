@@ -1,0 +1,52 @@
+<div class="jumbotron back-white" ui-view>
+    <div class="row">
+        <div class="col">
+            <h1 class="jumbotron-hr">Colaboradores</h1>
+        </div>
+        <div class="col text-right">
+
+            <a
+                    class="btn btn-success" ui-sref=".cadastrar"
+                    title="Novo">
+                <i class="font15px fa fa-plus"></i> Novo
+            </a>
+        </div>
+    </div>
+
+        <div class="row">
+            <input id="filter" ng-required="true" class="form-control" type="text" ng-model="pesquisa.criterio"
+                   placeholder="Pesquisa"/>
+            <i class="search-icon fa fa-search" ng-click="consultar()"></i>
+        </div>
+
+    <br/>
+
+    <div class="row">
+
+        <table ng-table="tabela" style="width:100%">
+            <tr style="width:100%">
+                <td>
+                    <div class="card" style="width:49%;float:left;cursor:pointer" ng-repeat="colaborador in $data">
+                        <div class="row" ui-sref=".alterar({id:colaborador.id})">
+                            <div class="col-3 text-center align-middle">
+                                <img class="card-img-top img-fluid"
+                                     alt=""
+                                     ng-src={{colaborador.file}}
+                                     style="height: 160px; width: 100%; display: block;">
+                            </div>
+                            <div class="col">
+                                <div class="card-block">
+                                    <h3 class="card-title">{{colaborador.nome}}</h3>
+                                    <p class="card-title">{{colaborador.cargo.nome}}</p>
+                                    <p class="card-text">{{colaborador.unidade.nome}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
