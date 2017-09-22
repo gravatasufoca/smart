@@ -1,5 +1,6 @@
 var appConfig = {
     appContextRoot:"smart",
+    controllersRoute: '/api/v1',
     login:{
         url: "api/v1/login",
         url_usuario: 'api/v1/login/usuario',

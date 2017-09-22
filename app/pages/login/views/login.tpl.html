@@ -58,3 +58,23 @@
 
     </div>
 </div>
+
+<script type="text/ng-template" id="modalEsfera">
+    <div>
+        <div class="container">
+            <table ng-table="tabelaPerfil"
+                   class="table table-striped table-bordered">
+                <tbody>
+                <tr ng-repeat="e in $data">
+                    <td class="centeredColumnXY" data-title="'Nome da esfera'">{{e.nome}}</td>
+                    <td class="centeredColumnXY" data-title="'Usar esfera'" style="width: 20%;">
+                        <a ng-click="selecionarPerfil(e)"
+                           class="btn btn-success btn-xs"
+                           title="Selecionar o aparelho {{e.nome}}"><i class="font17px fa fa-user"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</script>

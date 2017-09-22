@@ -7,22 +7,23 @@ require(['msAppJs'], function (app) {
         '$timeout',
         'loginService',
         '$notifyService',
-        "$state","autenticacaoService",
+        "$state","autenticacaoService","$ngConfirm","NgTableParams",
         function ($scope,
                   $rootScope,
                   $timeout,
                   loginService,
                   $notifyService,
-                  $state,autenticacaoService) {
-
+                  $state,autenticacaoService,$ngConfirm,NgTableParams) {
 
             /**
              * Dados do login e senha
              */
             $scope.formLogin = {
-                email: null,
-                password: null
+                email: "bruno@teste.com.br",
+                password: "teste"
             };
+
+            $scope.perfis=[];
 
             /**
              * Metodo que efetua o login do usuario com base nas informacoes inseridas no formulario
@@ -39,13 +40,17 @@ require(['msAppJs'], function (app) {
                                 .then(function (usuario) {
 
                                     $notifyService.close();
-
-                                    if (window.geral.isEmpty(usuario.access_token)) {
-                                        $cookieStore.put('isUsuarioAutenticado', false);
+                                    console.info(usuario);
+                                    if(!window.geral.isEmpty(usuario.perfis) && usuario.perfis.length > 1) {
+                                        // $cookieStore.put('isUsuarioAutenticado', false);
+                                        autenticacaoService.setUsuarioAutenticado(false);
+                                        $scope.exibirPerfis(usuario.perfis);
                                     } else {
                                         setUsuarioScope(usuario);
-                                        $state.go("home")
+                                        autenticacaoService.setUsuarioAutenticado(true);
+                                        $state.go("home");
                                     }
+
                                 });
                         }, function (error) {
                             $notifyService.close();
@@ -72,6 +77,42 @@ require(['msAppJs'], function (app) {
             function setUsuarioScope(usuario) {
                 $rootScope.usuarioAutenticado = usuario;
             }
+
+
+            /**
+             * Seleciona um perfil na tela e verifa se o mesmo tem esferas selecionaveis
+             */
+            $scope.selecionarPerfil = function(perfilAcesso) {
+                loginService.selecionarPerfil(perfilAcesso)
+                    .then(function(resposta) {
+                        $notifyService.close();
+                        setUsuarioScope(resposta);
+                        autenticacaoService.setUsuarioAutenticado(true);
+                        $state.go("home");
+                    });
+
+            };
+
+            /**
+             * Exibe uma modal com os perfis disponiveis para escolha do usuario
+             */
+            $scope.exibirPerfis = function (perfis) {
+                $scope.perfis=perfis;
+
+                $scope.tabelaPerfil = new NgTableParams({
+                    page: 1,
+                    count: 5
+                },{
+                    dataset:perfis
+                });
+
+                $scope.confirm=$ngConfirm({
+                    title:"Escolha o aparelho",
+                    contentUrl : 'modalEsfera', //esta dentro de login.tpl.html
+                    scope:$scope
+                });
+
+            };
 
 
 

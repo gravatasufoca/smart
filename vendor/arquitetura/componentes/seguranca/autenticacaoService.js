@@ -46,11 +46,11 @@ define([
 		  var senhaCrypto = CryptoJS.SHA256(senha).toString();
 
 		  var credentials = {
-			  grant_type : 'password',
-			  client_id : 'clientAngularMS',
-			  client_secret : 'secret',
-			  username : email,
-			  password : senha
+			  "grant_type" : 'password',
+              "client_id" : 'clientAngularMS',
+              "client_secret" : 'secret',
+              "username" : email,
+              "password" : senha
 		  };
 		  $http({
 			  url : appConfig.login.url,
@@ -64,6 +64,7 @@ define([
                       if (response.data != null && response.data.resultado != null) {
                           segurancaService.setUsuario(response.data.resultado.usuario);
                       }
+                      segurancaService.setUsuarioAutenticado(true);
                       deferred.resolve(segurancaService);
                   }else{
 				  	deferred.reject();
@@ -103,10 +104,15 @@ define([
 			}
 		};
 
+		var setUsuarioAutenticado=function (autenticado) {
+            segurancaService.setUsuarioAutenticado(autenticado);
+        };
+
 		return {
 			autenticar: autenticar,
 			sair: sair,
-			recuperarDadosUsuario: recuperarDadosUsuario
+			recuperarDadosUsuario: recuperarDadosUsuario,
+			setUsuarioAutenticado:setUsuarioAutenticado
 		}
 
 	}]);

@@ -103,7 +103,6 @@ define([
 
             var setToken = function (token) {
                 $cookieStore.put('msToken', token);
-                setUsuarioAutenticado(true);
             };
 
             var getToken = function () {
